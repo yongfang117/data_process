@@ -12,8 +12,8 @@ Prompt: code in Python3 env
 def filter_tags(htmlstr):
     # 过滤DOCTYPE
     htmlstr = ' '.join(htmlstr.split()) # 去掉多余的空格
-    re_doctype = re.compile(r'<!DOCTYPE .*?> ', re.S)
-    s = re_doctype.sub('',htmlstr)
+    re_doctype = re.compile(r'<!DOCTYPE .*?> ', re.S)  ## compile() 将字符串编译为字节代码对象
+    s = re_doctype.sub('',htmlstr)   ## 使用 htmlstr=re.sub(re_doctype,' ', htmlstr)，效果一样
 
     # 过滤CDATA
     re_cdata = re.compile('//<!CDATA\[[ >]∗ //\] > ', re.I)
