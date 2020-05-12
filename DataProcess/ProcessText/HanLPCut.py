@@ -11,14 +11,14 @@ JPype is an effort to allow python programs full access to java class
 libraries
 pip install JPype1
 >pip install wheel
->pip install JPype1-0.6.3-cp37-cp37m-win_amd64.whl
+>pip install JPype1-0.6.3-cp37-cp37m-win_amd64.whl ## pip install D:\python\JPype1-0.7.1-cp36-cp36m-win32.whl 开始安装win_amd64不支持，换成win32后OK
 '''
 
 from jpype import *
 
 # 调用HanLP的java包，如下路径下载并解压c盘即可：
 # 启动JVM，Linux需替换分号;为冒号:
-startJVM(getDefaultJVMPath(), "-Djava.class.path=C:\hanlp\hanlp-1.3.2.jar;C:\hanlp", "-Xms1g", "-Xmx1g")
+startJVM(getDefaultJVMPath(), "-Djava.class.path=C:\hanlp\hanlp-1.3.2.jar;C:\hanlp", "-Xms1g", "-Xmx1g") ## 改成 "-Xms512M", "-Xmx512M" 后不报内存不够了
 
 
 paraStr1='中国科学院计算技术研究所的宗成庆教授正在教授自然语言处理课程'
@@ -26,6 +26,7 @@ paraStr1='中国科学院计算技术研究所的宗成庆教授正在教授自�
 print("="*30+"HanLP分词"+"="*30)
 HanLP = JClass('com.hankcs.hanlp.HanLP')
 print(HanLP.segment(paraStr1))
+
 
 
 
@@ -52,7 +53,7 @@ for term in termList :
 
 print("="*30+" 极速词典分词"+"="*30)
 SpeedTokenizer = JClass('com.hankcs.hanlp.tokenizer.SpeedTokenizer')
-print(NLPTokenizer.segment(paraStr1))
+print(SpeedTokenizer.segment(paraStr1))
 
 
 
